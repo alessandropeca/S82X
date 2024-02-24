@@ -11,5 +11,5 @@ These files are free to use, but if you use them, please cite our paper [at this
 
 
 # S82-XL
-The catalog of S82-XL is available [at this link](https://ui.adsabs.harvard.edu/abs/2023ApJ...943..162P/abstract). (internal use only). The catalog will be publicly available once the paper is published (Peca et al. 2024, in prep.).
+The catalog of S82-XL is available (Xray_15_comb4_slim32_ZSDSS.csv.zip) for internal use only (password required). The catalog will be publicly available once the paper is published (Peca et al. 2024, in prep.).
 
