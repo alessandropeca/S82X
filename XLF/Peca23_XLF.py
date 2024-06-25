@@ -9,7 +9,7 @@ lum = np.linspace(42, 47, 101)
 z = np.linspace(0, 4, 101) # these are the buondaries determined in the paper
 interp = RegularGridInterpolator((lum, z), phi_mat, method='linear', 
                                  bounds_error=False, fill_value=0) 
-                                 # use fill_value=None to extrapolate outside lum and z ranges determine in the paper
+                                 # use fill_value=None to extrapolate outside lum and z ranges determined in the paper
 
 # Call the function to obtain the phi value (log10 of [Mpc^-3]) for any lum and z,
 # eg., the XLF in lum=46 and z=3:
