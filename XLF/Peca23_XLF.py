@@ -10,7 +10,7 @@ def main(args, plot):
     
     def check_extrapolation1(l, z):
         extrapolated = False
-        if z > 4 or l < 42 or l > 47:
+        if z < 0 or z > 4 or l < 42 or l > 47:
             extrapolated = True
             print("Warning: the LF is being extrapolated for z > 4 and log Lx < 42 or > 47")
         return extrapolated
@@ -19,7 +19,7 @@ def main(args, plot):
         extrapolated = False
         if z1 < 0 or z2 > 4 or l1 < 42 or l2 > 47:
             extrapolated = True
-            print("Warning: the LF is being extrapolated for z > 4 and log Lx < 42 or > 47")
+            print("Warning: the LF is being extrapolated for z > 4 and log Lx < 42 or > 47\n")
         return extrapolated
 
 
@@ -39,8 +39,9 @@ def main(args, plot):
             if z_value > 4:
                 max_z = z_value
             else:
-                print("z < 0 not allowed.")
-                sys.exit()
+                if z_value < 0:
+                    print("z < 0 not allowed.")
+                    sys.exit()
     
     elif len(args) == 4:
         if check_extrapolation2(float(args[0]), float(args[1]), float(args[2]), float(args[3])):
@@ -55,7 +56,7 @@ def main(args, plot):
                 min_lum = lum_min
             if z_max > 4:
                 max_z = z_max
-            if z_min < 0:
+            if z_min < 0 or z_max < 0:
                 print("z < 0 not allowed.")
                 sys.exit()
     
@@ -125,9 +126,11 @@ def main(args, plot):
             plt.show()
 
 if __name__ == "__main__":
+    print()
     parser = argparse.ArgumentParser(description='Compute and plot X-ray luminosity function.')
     parser.add_argument('args', nargs='+', help='Luminosity and redshift values or ranges (2 or 4 values)')
     parser.add_argument('--plot', type=str, default='yes', help='Plot the graph (yes or no)')
     args = parser.parse_args()
 
     main(args.args, args.plot)
+    print("\nPlease cite Peca et al. 2023 (Bibcode:2023ApJ...943..162P)\n")
