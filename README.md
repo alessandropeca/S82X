@@ -37,5 +37,5 @@ The script will automatically print the 3D XLF with the requested volume density
 
 
 # S82-XL
-The catalog of S82-XL is available (Xray_15_comb4_slim45_ZBEST_7_HR_map.zip) for internal use only (password required). The catalog will be publicly available once the paper is published (Peca et al. 2024, in prep.).
+The catalog of S82-XL is available (Xray_15_comb4_slim45_ZBEST_7_HR_map.zip) for internal use only (password required). The catalog will be publicly available once the paper is published (Peca et al. 2024, submitted).
 
