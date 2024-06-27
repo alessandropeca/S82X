@@ -133,4 +133,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args.args, args.plot)
-    print("\nPlease cite Peca et al. 2023 (Bibcode:2023ApJ...943..162P)\n")
+    print("\nPlease cite Peca et al. 2023 Bibcode:2023ApJ...943..162P\n")
