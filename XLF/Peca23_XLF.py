@@ -127,8 +127,8 @@ def main(args, plot):
 
 if __name__ == "__main__":
     print()
-    parser = argparse.ArgumentParser(description='Compute and plot X-ray luminosity function.')
-    parser.add_argument('args', nargs='+', help='Luminosity and redshift values or ranges (2 or 4 values)')
+    parser = argparse.ArgumentParser(description='Compute and plot X-ray luminosity function for any Lx and z values or bins.')
+    parser.add_argument('args', nargs='+', help='Luminosity and redshift values or ranges  <log Lx_min> <log Lx_max> <z_min> <z_max> or  <log Lx> <z>')
     parser.add_argument('--plot', type=str, default='yes', help='Plot the graph (yes or no)')
     args = parser.parse_args()
 
