@@ -29,6 +29,7 @@ The result will be printed in the terminal.
 <img width="681" alt="Screenshot 2024-06-27 at 4 45 59 PM" src="https://github.com/alessandropeca/S82X/assets/30237963/adaed85c-e0ac-48ff-8f55-ad5abbea57af">
 
 NOTE: The script will print a warning if the provided values are outside the predefined ranges (log Lx [42-47], z [0,4]) derived in [Peca et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJ...943..162P/abstract). For larger ranges, the code will compute a linear extrapolation, so use it with caution.
+NOTE: A caveat of this XLF comes from the fact that in Peca+23 a very small number of C-thick AGN where discovered, so the XLF has to be considered reliaable up to log NH~24 cm^2.
 
 #### Plotting control
 
