@@ -36,7 +36,7 @@ To integrate the XLF over a range of luminosities (Lx_min to Lx_max) and fixed r
 
 NOTE: The script will print a warning if the provided values are outside the predefined ranges (log Lx [42-47], z [0,4]) derived in [Peca et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJ...943..162P/abstract). For larger ranges, the code will compute a linear extrapolation, so use it with caution.
 
-NOTE: A very small number of C-thick AGN were discovered in Peca+23, therefore this XLF has to be considered reliable up to $\log N_H \sim 24\,\, cm^2$.
+NOTE: A very small number of C-thick AGN were discovered in Peca+23, therefore this XLF has to be considered reliable up to $\log N_H \sim 24\ \ cm^2$.
 
 #### Plotting control
 
