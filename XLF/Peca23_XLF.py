@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.interpolate import RegularGridInterpolator
-from scipy.integrate import dblquad
+from scipy.integrate import dblquad, quad
 import matplotlib.pyplot as plt
 import argparse
 import sys
@@ -60,6 +60,21 @@ def main(args, plot):
                 print("z < 0 not allowed.")
                 sys.exit()
     
+    elif len(args) == 3:
+        lum_min = float(args[0])
+        lum_max = float(args[1])
+        x_value = float(args[2])
+        if check_extrapolation1(lum_min, x_value) or check_extrapolation1(lum_max, x_value):
+            if lum_min < 42 or lum_max > 47 or x_value < 0 or x_value > 4:
+                print("Warning: the LF is being extrapolated for z > 4 and log Lx < 42 or > 47\n")
+            if lum_min < 42:
+                min_lum = lum_min
+            if lum_max > 47:
+                max_lum = lum_max
+            if x_value < 0:
+                print("z < 0 not allowed.")
+                sys.exit()
+    
     else:
         print("Wrong number of parameters.")
         sys.exit()
@@ -75,7 +90,8 @@ def main(args, plot):
         lum_value = float(args[0])
         z_value = float(args[1])
         phi = interp([lum_value, z_value])
-        print(f"log Phi/Mp3 at Lx={lum_value} and z={z_value}: {phi[0]}")
+        total_phi = 10**(phi[0])
+        print(f"Space density at Lx={lum_value} and z={z_value}: {total_phi:.3e} Mpc^-3 [Lx={lum_value}, z={z_value}]")
 
         if plot.lower() == 'yes':
             # Plotting the interpolated function and the specified point
@@ -87,6 +103,8 @@ def main(args, plot):
             X, Y = np.meshgrid(lum, z, indexing='ij')
             surf = ax.plot_wireframe(X, Y, phi_mat)
             ax.scatter(lum_value, z_value, phi, marker='o', color='red', s=50)
+            ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_value}, z={z_value}]")
+
             plt.show()
 
     elif len(args) == 4:
@@ -103,7 +121,7 @@ def main(args, plot):
         # Perform the double integration
         total_phi, error = dblquad(integrand, z_min, z_max, lambda z: lum_min, lambda z: lum_max)
 
-        print(f"Total space density: {total_phi:.3e} Mpc^-3")
+        print(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_min}-{z_max}]")
         print(f"Integration error estimate: {error:.3e}")
 
         if plot.lower() == 'yes':
@@ -121,14 +139,47 @@ def main(args, plot):
             z_range = np.linspace(z_min, z_max, 10)
             L, Z = np.meshgrid(lum_range, z_range, indexing='ij')
             Phi_integration_region = interp((L, Z))
-            ax.plot_surface(L, Z, Phi_integration_region, color='red', alpha=0.5)
+            ax.plot_surface(L, Z, Phi_integration_region, color='red', alpha=0.75)
+            ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_min}-{z_max}]")
+            plt.show()
 
+    elif len(args) == 3:
+        # Define the integration bounds
+        lum_min = float(args[0])
+        lum_max = float(args[1])
+        z_value = float(args[2])
+
+        # Define the function to integrate
+        def integrand(l):
+            return 10**interp([l, z_value])  # Convert from log10 to linear scale for integration
+
+        # Perform the integration over luminosity at a fixed redshift
+        total_phi, error = quad(integrand, lum_min, lum_max)
+
+        print(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_value}]")
+        print(f"Integration error estimate: {error:.3e}")
+
+        if plot.lower() == 'yes':
+            # Plotting the interpolated function and the integration region
+            fig = plt.figure(figsize=(8, 8))
+            ax = fig.add_subplot(111, projection='3d')
+            ax.set_xlabel("log Lx")
+            ax.set_ylabel("z")
+            ax.set_zlabel("log $\Phi$")
+            X, Y = np.meshgrid(lum, z, indexing='ij')
+            surf = ax.plot_wireframe(X, Y, phi_mat)
+
+            # Highlighting the integration region
+            lum_range = np.linspace(lum_min, lum_max, 10)
+            Phi_integration_region = interp((lum_range, [z_value]*10))
+            ax.plot(lum_range, [z_value]*10, Phi_integration_region, color='red', lw=2, alpha=0.75)
+            ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_value}]")
             plt.show()
 
 if __name__ == "__main__":
     print()
-    parser = argparse.ArgumentParser(description='Compute and plot X-ray luminosity function for any Lx and z values or bins.')
-    parser.add_argument('args', nargs='+', help='Luminosity and redshift values or ranges  <log Lx_min> <log Lx_max> <z_min> <z_max> or  <log Lx> <z>')
+    parser = argparse.ArgumentParser(description='Compute and plot X-ray luminosity function.')
+    parser.add_argument('args', nargs='+', help='2 arguments: Get space density at Lx and z; 3 arguments: Integrate between Lx1 and Lx2 at a fixed z; 4 arguments: Integrate between Lx1 and Lx2, and z1 and z2')
     parser.add_argument('--plot', type=str, default='yes', help='Plot the graph (yes or no)')
     args = parser.parse_args()
 
