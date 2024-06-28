@@ -20,7 +20,6 @@ The result will be printed in the terminal.
 <img width="683" alt="Screenshot 2024-06-27 at 4 45 14 PM" src="https://github.com/alessandropeca/S82X/assets/30237963/8412c9ad-226f-439d-87ea-3962848e9be1">
 
 #### Evaluating XLF in luminosity and redshift bins
-#### Currently there is a bug with this option that needs investigation
 
 To integrate the XLF over a range of luminosities (Lx_min to Lx_max) and redshifts (z_min to z_max):
 
@@ -28,6 +27,12 @@ To integrate the XLF over a range of luminosities (Lx_min to Lx_max) and redshif
 
 The result will be printed in the terminal.
 <img width="681" alt="Screenshot 2024-06-27 at 4 45 59 PM" src="https://github.com/alessandropeca/S82X/assets/30237963/adaed85c-e0ac-48ff-8f55-ad5abbea57af">
+
+#### Evaluating XLF in luminosity and fixed redshift
+
+To integrate the XLF over a range of luminosities (Lx_min to Lx_max) and fixed redshift:
+
+`python Peca23_XLF.py <log Lx_min> <log Lx_max> <z>`
 
 NOTE: The script will print a warning if the provided values are outside the predefined ranges (log Lx [42-47], z [0,4]) derived in [Peca et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJ...943..162P/abstract). For larger ranges, the code will compute a linear extrapolation, so use it with caution.
 
