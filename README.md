@@ -1,3 +1,8 @@
+# S82-XL
+The X-ray catalog of S82-XL is available for download (S82-XL_FINAL_XRAY.fits.zip). Information on each column are stored in the header file. If you use the catalog, please cite our paper [Peca et al. 2024] (https://ui.adsabs.harvard.edu/abs/2024arXiv240709617P/abstract)
+
+
+
 # S82X
 
 This repository contains some of the n-dim array used in Peca et al. 2023 (see full paper for details):
@@ -42,8 +47,4 @@ NOTE: A very small number of C-thick AGN were discovered in Peca+23, therefore t
 
 The script will automatically print the 3D XLF with the requested volume density in red. To disallow the plotting option just add `--plot=False`
 
-
-
-# S82-XL
-The catalog of S82-XL is available (Xray_15_comb4_slim45_ZBEST_7_HR_map.zip) for internal use only (password required). The catalog will be publicly available once the paper is published (Peca et al. 2024, submitted).
 
