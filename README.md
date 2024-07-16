@@ -1,5 +1,5 @@
 # S82-XL
-The X-ray catalog of S82-XL is available for download (S82-XL_FINAL_XRAY.fits.zip). Information on each column are stored in the header file. If you use the catalog, please cite our paper [Peca et al. 2024](https://ui.adsabs.harvard.edu/abs/2024arXiv240709617P/abstract)
+The X-ray catalog of S82-XL is available for download (S82-XL_FINAL_XRAY.fits.zip). Information on each column is stored in the header file. If you use the catalog, please cite our paper [Peca et al. 2024](https://ui.adsabs.harvard.edu/abs/2024arXiv240709617P/abstract)
 
 
 
