@@ -95,7 +95,7 @@ def main(args, plot):
 
         if plot.lower() == 'yes':
             # Plotting the interpolated function and the specified point
-            fig = plt.figure(figsize=(8, 8))
+            fig = plt.figure(figsize=(8, 6))
             ax = fig.add_subplot(111, projection='3d')
             ax.set_xlabel("log Lx")
             ax.set_ylabel("z")
@@ -104,7 +104,7 @@ def main(args, plot):
             surf = ax.plot_wireframe(X, Y, phi_mat)
             ax.scatter(lum_value, z_value, phi, marker='o', color='red', s=50)
             ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_value}, z={z_value}]")
-
+            plt.tight_layout()
             plt.show()
 
     elif len(args) == 4:
@@ -126,7 +126,7 @@ def main(args, plot):
 
         if plot.lower() == 'yes':
             # Plotting the interpolated function and the integration region
-            fig = plt.figure(figsize=(8, 8))
+            fig = plt.figure(figsize=(8, 6))
             ax = fig.add_subplot(111, projection='3d')
             ax.set_xlabel("log Lx")
             ax.set_ylabel("z")
@@ -141,6 +141,7 @@ def main(args, plot):
             Phi_integration_region = interp((L, Z))
             ax.plot_surface(L, Z, Phi_integration_region, color='red', alpha=0.75)
             ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_min}-{z_max}]")
+            plt.tight_layout()
             plt.show()
 
     elif len(args) == 3:
@@ -161,7 +162,7 @@ def main(args, plot):
 
         if plot.lower() == 'yes':
             # Plotting the interpolated function and the integration region
-            fig = plt.figure(figsize=(8, 8))
+            fig = plt.figure(figsize=(8, 6))
             ax = fig.add_subplot(111, projection='3d')
             ax.set_xlabel("log Lx")
             ax.set_ylabel("z")
@@ -174,6 +175,7 @@ def main(args, plot):
             Phi_integration_region = interp((lum_range, [z_value]*10))
             ax.plot(lum_range, [z_value]*10, Phi_integration_region, color='red', lw=2, alpha=0.75)
             ax.set_title(f"Space density: {total_phi:.3e} Mpc^-3 [Lx={lum_min}-{lum_max}, z={z_value}]")
+            plt.tight_layout()
             plt.show()
 
 if __name__ == "__main__":
