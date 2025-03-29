@@ -18,8 +18,7 @@ This script (Peca23_XLF.py) computes and plots the X-ray Luminosity Function (XL
 Tu run the XLF, you can:
 1. Use the examples below.
 2. Open the Jupyter notebook: [`Peca23_XLF_Usage.ipynb`](XLF/Peca23_XLF_Usage.ipynb).
-3. **NEW:** Launch the XLF Tool directly in Binder:  
-   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alessandropeca/S82X/HEAD?filepath=XLF/Peca23_XLF_Usage.ipynb)
+3. **NEW:** Launch the XLF Tool directly in Binder:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/alessandropeca/S82X/HEAD?filepath=XLF/Peca23_XLF_Usage.ipynb)
 
 #### Evaluating XLF at a specific luminosity and redshift
 
