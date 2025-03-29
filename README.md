@@ -15,6 +15,8 @@ These files are free to use, but if you use them, please cite our paper [at this
 
 This script (Peca23_XLF.py) computes and plots the X-ray Luminosity Function (XLF) based on a provided dataset. It can evaluate the XLF at specific points or integrate over specified luminosity and redshift ranges.
 
+You can use the examples below, or use the Jupyter notebook `Peca23_XLF_Usage.ipynb`.
+
 #### Evaluating XLF at a specific luminosity and redshift
 
 To evaluate the XLF at a specific luminosity (`Lx`) and redshift (`z`):
